@@ -1,0 +1,55 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Principais Comandos Bash</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <!-- Se tiver algum comando registrado -->
+        {% if bash %}
+
+            <!-- Iterando nos objetos do banco -->
+            <h1> Bash Comandos </h1>
+
+            <!-- Apresentando os dados com tabela estilisada -->
+            <table class="table table-dark">
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th scope="col"> Desenvolvedor </th>
+                        <th scope="col"> Tecnologia </th>
+                        <th scope="col"> Comando </th>
+                        <th scope="col"> Descrição </th>
+                        <th scope="col"> Criado </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Iterando objetos do banco -->
+                    {% for b in bash %}
+                        <tr>
+                            <td scope="row"> {{ b.desenvolvedor }} </td>
+                            <td scope="row"> {{ b.tecnologia }} </td>
+                            <td scope="row"> {{ b.comando }} </td>
+                            <td scope="row"> {{ b.descricao }} </td>
+                            <td scope="row"> {{ b.criado }} </td>
+                        </tr>
+                    <!-- End for -->
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        <!-- Se não tiver, mensagem simples -->
+        {% else %}
+            <h2> Ainda não há comandos registrados. </h2>
+
+        <!-- Fim do IF -->
+        {% endif %}
+    </div>
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

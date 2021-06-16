@@ -1,0 +1,54 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Principais Comandos Python</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <!-- Se tiver algum comando registrado -->
+        {% if python %}
+
+            <!-- Iterando nos objetos do banco -->
+            <h1> Python Comandos </h1>
+            <!-- Apresentando os dados com tabela estilisada -->
+            <table class="table table-dark">
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th scope="col"> Desenvolvedor </th>
+                        <th scope="col"> Tecnologia </th>
+                        <th scope="col"> Comando </th>
+                        <th scope="col"> Descrição </th>
+                        <th scope="col"> Criado </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Iterando objetos do banco -->
+                    {% for p in python %}
+                        <tr>
+                            <td scope="row"> {{ p.desenvolvedor }} </td>
+                            <td scope="row"> {{ p.tecnologia }} </td>
+                            <td scope="row"> {{ p.comando }} </td>
+                            <td scope="row"> {{ p.descricao }} </td>
+                            <td scope="row"> {{ p.criado }} </td>
+                        </tr>
+                    <!-- End for -->
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        <!-- Se não tiver, mensagem simples -->
+        {% else %}
+            <h2> Ainda não há comandos registrados. </h2>
+
+        <!-- Fim do IF -->
+        {% endif %}
+    </div>
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

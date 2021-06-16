@@ -1,0 +1,28 @@
+{% load bootstrap4 %} <!-- carregando bootstrap -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo comando</title>
+    {% bootstrap_css %} <!-- carregando css -->
+</head>
+<body>
+    <div class="container">
+        <h1> Registre um novo comando </h1>
+        {% bootstrap_messages %} <!-- mensagem de erro ou sucesso -->
+
+        <form action="{% url 'registracomando' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %} <!-- segurança de formulário do django -->
+            {% bootstrap_form comando %} <!-- estilizando css -->
+
+             <!-- botão do formulário -->
+            {% buttons %}
+                <button type="submit" class="btn btn-primary"> Registrar Novo Comando </button>
+            {% endbuttons %}
+        </form>
+    </div>
+
+
+    {% bootstrap_javascript jquery='full' %} <!-- carregando javascript -->
+</body>
+</html>
