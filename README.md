@@ -3,8 +3,6 @@
 ## Link principal
 [Link da aplicação](https://teamadm.herokuapp.com/)
 
-## Inserir novo comando
-[Link da rota](https://teamadm.herokuapp.com/registracomando/)
-
-## Tela administrativa
-[Tela admin](https://teamadm.herokuapp.com/painel/)
+## Utilidade da aplicação
+- Servir como um manual dos principais comandos das tecnologias e linguagens de programação.
+- Incluir tanto linguagens de programação como frameworks.
