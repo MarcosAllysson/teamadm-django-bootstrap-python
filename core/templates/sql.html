@@ -1,0 +1,54 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Principais Comandos SQL</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <!-- Se tiver algum comando registrado -->
+        {% if sql %}
+
+            <!-- Iterando nos objetos do banco -->
+            <h1> SQL Comandos </h1>
+            <!-- Apresentando os dados com tabela estilisada -->
+            <table class="table table-dark">
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <th scope="col"> Desenvolvedor </th>
+                        <th scope="col"> Tecnologia </th>
+                        <th scope="col"> Comando </th>
+                        <th scope="col"> Descrição </th>
+                        <th scope="col"> Criado </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Iterando objetos do banco -->
+                    {% for s in sql %}
+                        <tr>
+                            <td scope="row"> {{ s.desenvolvedor }} </td>
+                            <td scope="row"> {{ s.tecnologia }} </td>
+                            <td scope="row"> {{ s.comando }} </td>
+                            <td scope="row"> {{ s.descricao }} </td>
+                            <td scope="row"> {{ s.criado }} </td>
+                        </tr>
+                    <!-- End for -->
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        <!-- Se não tiver, mensagem simples -->
+        {% else %}
+            <h2> Ainda não há comandos registrados. </h2>
+
+        <!-- Fim do IF -->
+        {% endif %}
+    </div>
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

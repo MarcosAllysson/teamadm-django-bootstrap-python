@@ -14,7 +14,8 @@ class ComandoModel(models.Model):
     TECNOLOGIAS = [
         ('PY', 'Python'),
         ('SQL', 'SQL'),
-        ('SH', 'Bash')
+        ('SH', 'Bash'),
+        ('GIT', 'Git'),
     ]
 
     desenvolvedor = models.CharField('Desenvolvedor', max_length=50, choices=DESENVOLVEDORES)

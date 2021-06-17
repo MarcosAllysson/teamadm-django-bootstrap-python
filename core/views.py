@@ -29,6 +29,26 @@ def bash(request):
     return render(request, 'bash.html', text)
 
 
+def sql(request):
+    """
+    View retorna todos os registros do banco da tecnologia SQL
+    """
+    text = {
+        'sql': ComandoModel.objects.filter(tecnologia='SQL')
+    }
+    return render(request, 'sql.html', text)
+
+
+def git(request):
+    """
+    View retorna todos os registros do banco da tecnologia GIT
+    """
+    text = {
+        'git': ComandoModel.objects.filter(tecnologia='GIT')
+    }
+    return render(request, 'git.html', text)
+
+
 def registra_comando(request):
     # se o usuário estiver logado
     if str(request.user) != 'AnonymousUser':
