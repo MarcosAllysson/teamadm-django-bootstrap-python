@@ -25,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xk4dz8bxrqinv1s@t_qqege!q8wb6in(cdmf6d@okm6x(iiqiz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 #DEBUG = False
-DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'teamadm.herokuapp.com']
 #ALLOWED_HOSTS = ['*']
@@ -35,14 +35,16 @@ ALLOWED_HOSTS = ['127.0.0.1', 'teamadm.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'core',
+    'bootstrap4',
+    'django_adminlte',
+    'django_adminlte_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -79,20 +81,20 @@ WSGI_APPLICATION = 'teamadm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 """
-
-
 # postgre no heroku
 DATABASES = {
     'default': dj_database_url.config()
 }
+"""
 
 
 # Password validation
@@ -135,7 +137,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Caso a aplicação faça upload de arquivos
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type

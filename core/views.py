@@ -1,52 +1,61 @@
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 from .forms import ComandoModelForm
 from django.contrib import messages
 from .models import ComandoModel
 
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html')
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
-def python(request):
+class PythonView(TemplateView):
     """
     View retorna todos os registros do banco da tecnologia python
     """
-    context = {
-        'python': ComandoModel.objects.filter(tecnologia='PY')
-    }
-    return render(request, 'python.html', context)
+    template_name = 'python.html'
+
+    def get_context_data(self, **kwargs):
+        context = dict()
+        context['python'] = ComandoModel.objects.filter(tecnologia='PY')
+        return context
 
 
-def bash(request):
+class BashView(TemplateView):
     """
     View retorna todos os registros do banco da tecnologia bash
     """
-    text = {
-        'bash': ComandoModel.objects.filter(tecnologia='SH')
-    }
-    return render(request, 'bash.html', text)
+    template_name = 'bash.html'
+
+    def get_context_data(self, **kwargs):
+        context = dict()
+        context['bash'] = ComandoModel.objects.filter(tecnologia='SH')
+        return context
 
 
-def sql(request):
+class SqlView(TemplateView):
     """
     View retorna todos os registros do banco da tecnologia SQL
     """
-    text = {
-        'sql': ComandoModel.objects.filter(tecnologia='SQL')
-    }
-    return render(request, 'sql.html', text)
+    template_name = 'sql.html'
+
+    def get_context_data(self, **kwargs):
+        context = dict()
+        context['sql'] = ComandoModel.objects.filter(tecnologia='SQL')
+        return context
 
 
-def git(request):
+class GitView(TemplateView):
     """
     View retorna todos os registros do banco da tecnologia GIT
     """
-    text = {
-        'git': ComandoModel.objects.filter(tecnologia='GIT')
-    }
-    return render(request, 'git.html', text)
+    template_name = 'git.html'
+
+    def get_context_data(self, **kwargs):
+        context = dict()
+        context['git'] = ComandoModel.objects.filter(tecnologia='GIT')
+        return context
 
 
 def registra_comando(request):

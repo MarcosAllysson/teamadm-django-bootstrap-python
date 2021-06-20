@@ -1,84 +1,22 @@
-{% load bootstrap4 %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title> Index </title>
-    {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="python/">Python</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bash/">Bash</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sql/">SQL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="git/">GIT</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends 'base.html' %} <!-- Herdando página base.html -->
+{% load static %} <!-- Carregando static -->
+{% block content %} <!-- Bloco de conteúdo exclusivo dessa página -->
 
-    <div class="container">
-        <h1> Comandos TeamADM </h1>
-        <p> Principais comandos das tecnologias mais usadas de programação. </p>
-        <!--<p> Ainda a desenvolver a index.... </p>-->
-    </div>
+    <!-- Hero Area Start -->
+      {% include 'header.html' %}
+    <!-- Hero Area End -->
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-100">
-                <!--<img src="..." class="card-img-top" alt="...">-->
-                <div class="card-body">
-                    <h5 class="card-title">PostGre</h5>
-                    <p class="card-text">Principais comandos de PostGreSQL</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <!--<img src="..." class="card-img-top" alt="...">-->
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Básico da Linguagem Python</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <!--<img src="..." class="card-img-top" alt="...">-->
-                <div class="card-body">
-                    <h5 class="card-title">BASH</h5>
-                    <p class="card-text">Usuário Linux? Espaço reservado!</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Features Section Start -->
+      {% include 'features.html' %}
+    <!-- Features Section End -->
 
+    <!-- Team Section Start -->
+      {% include 'equipe.html' %}
+    <!-- Team Section End -->
 
-    <!-- Site footer -->
-    <footer class="footer">
-        <h4> Conheça os DEV's </h4>
-            <p>Douglas Shibata</p>
-            <p>Marcos Allysson</p>
-    </footer>
+    <!-- Footer Section Start -->
+      {% include 'footer.html' %}
+    <!-- Footer Section End -->
 
-
-    {% bootstrap_javascript jquery='full' %}
-</body>
-</html>
+ <!-- Fim do block content -->
+{% endblock %}

@@ -1,18 +1,12 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Principais Comandos GIT</title>
-    {% bootstrap_css %}
-</head>
-<body>
+{% block content %}
     <div class="container">
         <!-- Se tiver algum comando registrado -->
         {% if git %}
 
             <!-- Iterando nos objetos do banco -->
-            <h1> Git Comandos </h1>
+            <h1 style="color: white;"> Git Comandos </h1>
             <!-- Apresentando os dados com tabela estilisada -->
             <table class="table table-dark">
                 <!-- Cabeçalho da tabela -->
@@ -49,6 +43,9 @@
         {% endif %}
     </div>
 
+    <!-- Footer Section Start -->
+      {% include 'footer.html' %}
+    <!-- Footer Section End -->
+
     {% bootstrap_javascript jquery='full' %}
-</body>
-</html>
+{% endblock %}

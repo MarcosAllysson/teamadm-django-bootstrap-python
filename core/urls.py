@@ -1,12 +1,12 @@
 from django.urls import path
-from .views import index, python, registra_comando, bash, git, sql
+from .views import registra_comando, IndexView, PythonView, BashView, GitView, SqlView
 
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('python/', python, name='python'),
-    path('bash/', bash, name='bash'),
-    path('git/', git, name='git'),
-    path('sql/', sql, name='sql'),
+    path('', IndexView.as_view(), name='index'),
+    path('python/', PythonView.as_view(), name='python'),
+    path('bash/', BashView.as_view(), name='bash'),
+    path('git/', GitView.as_view(), name='git'),
+    path('sql/', SqlView.as_view(), name='sql'),
     path('registracomando/', registra_comando, name='registracomando'),
 ]
