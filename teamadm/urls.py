@@ -22,3 +22,7 @@ urlpatterns = [
     path('painel/', admin.site.urls),
     path('', include('core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# mudando texto da tela admin
+admin.site.site_header = 'Team ADM'
+admin.site.site_title = 'Manual da Programação'

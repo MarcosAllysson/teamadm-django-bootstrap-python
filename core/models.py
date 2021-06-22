@@ -6,8 +6,7 @@ class ComandoModel(models.Model):
     # Desenvolvedores do projeto
     DESENVOLVEDORES = [
         ('Marcos', 'Marcos Allysson'),
-        ('Douglas', 'Douglas Shibata'),
-        ('Andre', 'Andre Luiz')
+        ('Douglas', 'Douglas Shibata')
     ]
 
     # Tecnologias do projeto
