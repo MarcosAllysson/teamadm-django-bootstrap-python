@@ -9,31 +9,12 @@
             <!-- Iterando nos objetos do banco -->
             <h1 style="color: white;"> Bash Comandos </h1>
 
-            <!-- Apresentando os dados com tabela estilisada -->
-            <table class="table table-dark">
-                <!-- Cabeçalho da tabela -->
-                <thead>
-                    <tr>
-                        <th scope="col"> Desenvolvedor </th>
-                        <th scope="col"> Tecnologia </th>
-                        <th scope="col"> Comando </th>
-                        <th scope="col"> Descrição </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <!-- Iterando objetos do banco -->
-                    {% for b in bash %}
-                        <tr>
-                            <td scope="row"> {{ b.desenvolvedor }} </td>
-                            <td scope="row"> {{ b.tecnologia }} </td>
-                            <td scope="row"> {{ b.comando }} </td>
-                            <td scope="row"> {{ b.descricao }} </td>
-                        </tr>
-                    <!-- End for -->
-                    {% endfor %}
-                </tbody>
-            </table>
+            <h2> Comandos BASH </h2>
+            {% for b in bash %}
+                <p> <b>Comando:</b> {{ b.comando }} </p>
+                <p> <b>Descrição:</b> {{ b.descricao }} </p>
+                <br>
+            {% endfor %}
 
         <!-- Se não tiver, mensagem simples -->
         {% else %}

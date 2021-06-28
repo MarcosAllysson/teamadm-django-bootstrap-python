@@ -31,17 +31,19 @@
       <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/logo.png' %} " alt=""></a>
+          <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/teamadm.png' %} " alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="lni-menu"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
-              <li class="nav-item active">
-                <a class="nav-link" href="#hero-area">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">
                   Início
                 </a>
               </li>
+
+              <!--
               <li class="nav-item">
                 <a class="nav-link" href="#features">
                   Tecnologias
@@ -52,23 +54,25 @@
                   Equipe
                 </a>
               </li>
+              -->
+
               <li class="nav-item">
-                <a class="nav-link" href="bash/">
+                <a class="nav-link" href="{% url 'bash' %}">
                   Bash
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="python/">
+                <a class="nav-link" href="{% url 'python' %}">
                   Python
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="git/">
+                <a class="nav-link" href="{% url 'git' %}">
                   Git
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="sql/">
+                <a class="nav-link" href="{% url 'sql' %}">
                   SQL
                 </a>
               </li>

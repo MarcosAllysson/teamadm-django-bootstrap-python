@@ -1,0 +1,25 @@
+            <!-- Apresentando os dados com tabela estilisada -->
+            <table class="table table-dark">
+                <!-- Cabeçalho da tabela -->
+                <thead>
+                    <tr>
+                        <!-- <th scope="col"> Desenvolvedor </th> -->
+                        <th scope="col"> Tecnologia </th>
+                        <th scope="col"> Comando </th>
+                        <th scope="col"> Descrição </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Iterando objetos do banco -->
+                    {% for p in python %}
+                        <tr>
+                            <!-- <td scope="row"> {{ p.desenvolvedor }} </td> -->
+                            <td scope="row"> {{ p.tecnologia }} </td>
+                            <td scope="row"> {{ p.comando }} </td>
+                            <td scope="row"> {{ p.descricao }} </td>
+                        </tr>
+                    <!-- End for -->
+                    {% endfor %}
+                </tbody>
+            </table>

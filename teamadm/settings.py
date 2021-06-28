@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xk4dz8bxrqinv1s@t_qqege!q8wb6in(cdmf6d@okm6x(iiqiz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'teamadm.herokuapp.com']
-#ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['127.0.0.1', 'teamadm.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -90,11 +90,11 @@ DATABASES = {
 }
 """
 
-
 # postgre no heroku
 DATABASES = {
     'default': dj_database_url.config()
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

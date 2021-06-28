@@ -7,31 +7,13 @@
 
             <!-- Iterando nos objetos do banco -->
             <h1 style="color: white;"> SQL Comandos </h1>
-            <!-- Apresentando os dados com tabela estilisada -->
-            <table class="table table-dark">
-                <!-- Cabeçalho da tabela -->
-                <thead>
-                    <tr>
-                        <th scope="col"> Desenvolvedor </th>
-                        <th scope="col"> Tecnologia </th>
-                        <th scope="col"> Comando </th>
-                        <th scope="col"> Descrição </th>
-                    </tr>
-                </thead>
 
-                <tbody>
-                    <!-- Iterando objetos do banco -->
-                    {% for s in sql %}
-                        <tr>
-                            <td scope="row"> {{ s.desenvolvedor }} </td>
-                            <td scope="row"> {{ s.tecnologia }} </td>
-                            <td scope="row"> {{ s.comando }} </td>
-                            <td scope="row"> {{ s.descricao }} </td>
-                        </tr>
-                    <!-- End for -->
-                    {% endfor %}
-                </tbody>
-            </table>
+            <h2> Comandos SQL </h2>
+            {% for s in sql %}
+                <p> <b>Comando:</b> {{ s.comando }} </p>
+                <p> <b>Descrição:</b> {{ s.descricao }} </p>
+                <br>
+            {% endfor %}
 
         <!-- Se não tiver, mensagem simples -->
         {% else %}
