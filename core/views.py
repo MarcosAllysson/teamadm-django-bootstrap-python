@@ -1,96 +1,127 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
+
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView
-from .forms import ComandoModelForm
-from django.contrib import messages
+from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ComandoModel
 
 
 # Create your views here.
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+    fields = '__all__'
+    redirect_field_name = True
+
+    def get_success_url(self):
+        return reverse_lazy('index')
+
+
+class CustomLogoutView(LogoutView):
+    next_page = reverse_lazy('index')
+
+
 class IndexView(TemplateView):
+    model = ComandoModel
     template_name = 'index.html'
 
 
-class PythonView(TemplateView):
+class ComandoAdd(LoginRequiredMixin, CreateView):
+    model = ComandoModel
+    fields = ['desenvolvedor', 'tecnologia', 'comando', 'descricao']
+    template_name = 'comando_form.html'
+    success_url = reverse_lazy('index')
+
+
+class PythonView(ListView):
     """
     View retorna todos os registros do banco da tecnologia python
     """
+    model = ComandoModel
     template_name = 'python.html'
 
     def get_context_data(self, **kwargs):
-        context = dict()
+        context = super().get_context_data(**kwargs)
         context['python'] = ComandoModel.objects.filter(tecnologia='PY')
         return context
 
 
-class BashView(TemplateView):
+class BashView(ListView):
     """
     View retorna todos os registros do banco da tecnologia bash
     """
+    model = ComandoModel
     template_name = 'bash.html'
 
     def get_context_data(self, **kwargs):
-        context = dict()
+        context = super().get_context_data(**kwargs)
         context['bash'] = ComandoModel.objects.filter(tecnologia='SH')
         return context
 
 
-class SqlView(TemplateView):
+class SqlView(ListView):
     """
     View retorna todos os registros do banco da tecnologia SQL
     """
+    model = ComandoModel
     template_name = 'sql.html'
 
     def get_context_data(self, **kwargs):
-        context = dict()
+        context = super().get_context_data(**kwargs)
         context['sql'] = ComandoModel.objects.filter(tecnologia='SQL')
         return context
 
 
-class GitView(TemplateView):
+class GitView(ListView):
     """
     View retorna todos os registros do banco da tecnologia GIT
     """
+    model = ComandoModel
     template_name = 'git.html'
 
     def get_context_data(self, **kwargs):
-        context = dict()
+        context = super().get_context_data(**kwargs)
         context['git'] = ComandoModel.objects.filter(tecnologia='GIT')
         return context
 
 
-def registra_comando(request):
-    # se o usuário estiver logado
-    if str(request.user) != 'AnonymousUser':
+class DockerView(ListView):
+    model = ComandoModel
+    template_name = 'docker.html'
 
-        # se a requisição é do método POST
-        if str(request.method) == 'POST':
-            # instancia o objeto passando como parâmetro o request
-            novocomando = ComandoModelForm(request.POST)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['docker'] = ComandoModel.objects.filter(tecnologia='DOCKER')
+        return context
 
-            # se o formulário é válido. Tudo digitado corretamente.
-            if novocomando.is_valid():
-                # salvando no banco
-                novocomando.save()
 
-                # mensagem de sucesso
-                messages.success(request, 'Novo comando salvo com sucesso')
+class ScriptView(ListView):
+    model = ComandoModel
+    template_name = 'script.html'
 
-                # limpando formulário
-                novocomando = ComandoModelForm()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['script'] = ComandoModel.objects.filter(tecnologia='SCRIPT')
+        return context
 
-            else:
-                messages.error(request, 'Houve algum erro ao salvar o comando.')
 
-        # se não é do tipo post, apenas instancia o objeto
-        else:
-            novocomando = ComandoModelForm()
+class RasaView(ListView):
+    model = ComandoModel
+    template_name = 'rasa.html'
 
-        # retorno do objeto na renderização da página
-        context = {
-            'comando': novocomando
-        }
-        return render(request, 'registracomando.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rasa'] = ComandoModel.objects.filter(tecnologia='RASA')
+        return context
 
-    # se não tem usuário logado, redirecionado pra index
-    else:
-        return redirect('index')
+
+class DjangoView(ListView):
+    model = ComandoModel
+    template_name = 'django.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['django'] = ComandoModel.objects.filter(tecnologia='DJANGO')
+        return context

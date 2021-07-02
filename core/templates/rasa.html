@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+    <div class="container">
+        <!-- Se tiver algum comando registrado -->
+        {% if rasa %}
+
+            <!-- Iterando nos objetos do banco -->
+            <h1 style="color: white;"> Rasa Comandos </h1>
+
+            <h2> Comandos Rasa </h2>
+            {% for r in rasa %}
+                <p> <b>Comando:</b> {{ r.comando }} </p>
+                <p> <b>Descrição:</b> {{ r.descricao }} </p>
+                <br>
+            {% endfor %}
+
+        <!-- Se não tiver, mensagem simples -->
+        {% else %}
+            <h2> Ainda não há comandos registrados. </h2>
+
+        <!-- Fim do IF -->
+        {% endif %}
+    </div>
+
+    <!-- Footer Section Start -->
+      {% include 'footer.html' %}
+    <!-- Footer Section End -->
+
+
+{% bootstrap_javascript jquery='full' %}
+{% endblock %}

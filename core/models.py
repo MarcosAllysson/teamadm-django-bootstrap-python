@@ -1,9 +1,8 @@
 from django.db import models
 
 
-# Create your models here.
+# Modelo
 class ComandoModel(models.Model):
-    # Desenvolvedores do projeto
     DESENVOLVEDORES = [
         ('Marcos', 'Marcos Allysson'),
         ('Douglas', 'Douglas Shibata')
@@ -15,6 +14,10 @@ class ComandoModel(models.Model):
         ('SQL', 'SQL'),
         ('SH', 'Bash'),
         ('GIT', 'Git'),
+        ('DJANGO', 'Django'),
+        ('RASA', 'Rasa'),
+        ('SCRIPT', 'Script'),
+        ('DOCKER', 'Docker'),
     ]
 
     desenvolvedor = models.CharField('Desenvolvedor', max_length=50, choices=DESENVOLVEDORES)
@@ -25,3 +28,6 @@ class ComandoModel(models.Model):
 
     def __str__(self):
         return self.desenvolvedor
+
+    class Meta:
+        ordering = ['criado']

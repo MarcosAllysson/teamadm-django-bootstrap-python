@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xk4dz8bxrqinv1s@t_qqege!q8wb6in(cdmf6d@okm6x(iiqiz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+# DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['127.0.0.1', 'teamadm.herokuapp.com']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['teamadm.herokuapp.com']
+# ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -146,3 +146,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Redirecionando pra index
 LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'

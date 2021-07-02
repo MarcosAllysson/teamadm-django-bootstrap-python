@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+    <div class="container">
+        <!-- Se tiver algum comando registrado -->
+        {% if django %}
+
+            <!-- Iterando nos objetos do banco -->
+            <h1 style="color: white;"> Django Comandos </h1>
+
+            <h2> Comandos Django </h2>
+            {% for d in django %}
+                <p> <b>Comando:</b> {{ d.comando }} </p>
+                <p> <b>Descrição:</b> {{ d.descricao }} </p>
+                <br>
+            {% endfor %}
+
+        <!-- Se não tiver, mensagem simples -->
+        {% else %}
+            <h2> Ainda não há comandos registrados. </h2>
+
+        <!-- Fim do IF -->
+        {% endif %}
+    </div>
+
+    <!-- Footer Section Start -->
+      {% include 'footer.html' %}
+    <!-- Footer Section End -->
+
+
+{% bootstrap_javascript jquery='full' %}
+{% endblock %}

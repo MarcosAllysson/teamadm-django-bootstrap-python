@@ -2,6 +2,17 @@
 {% load static %} <!-- Carregando static -->
 {% block content %} <!-- Bloco de conteúdo exclusivo dessa página -->
 
+    <!-- Checking if user is logged in -->
+      {% if request.user.is_authenticated %}
+            <div class="container">
+                    <h1 style="color: white;"> !! </h1>
+                    <h2> Opa {{ user.get_full_name }}! </h2>
+                    <button type="button" class="btn btn-success"> <a style="color: white;" href="{% url 'add-comando' %}"> Adicionar comando </a> </button>
+                    <button type="button" class="btn btn-primary"> <a style="color: white;" href="{% url 'logout' %}"> Logout </a> </button>
+
+            </div>
+      {% endif %}
+
     <!-- Hero Area Start -->
       {% include 'header.html' %}
     <!-- Hero Area End -->

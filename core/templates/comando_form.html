@@ -11,13 +11,14 @@
         <h1> Registre um novo comando </h1>
         {% bootstrap_messages %} <!-- mensagem de erro ou sucesso -->
 
-        <form action="{% url 'registracomando' %}" method="post" class="form" autocomplete="off">
+        <form method="post" class="form" autocomplete="off">
             {% csrf_token %} <!-- segurança de formulário do django -->
-            {% bootstrap_form comando %} <!-- estilizando css -->
+            {% bootstrap_form form %} <!-- estilizando css -->
 
              <!-- botão do formulário -->
             {% buttons %}
-                <button type="submit" class="btn btn-primary"> Registrar Novo Comando </button>
+                <button type="submit" class="btn btn-primary"> Registrar </button>
+                <button type="button" class="btn btn-warning"> <a href="{% url 'index' %}"> Cancelar </a> </button>
             {% endbuttons %}
         </form>
     </div>
