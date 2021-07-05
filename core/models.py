@@ -22,12 +22,12 @@ class ComandoModel(models.Model):
 
     desenvolvedor = models.CharField('Desenvolvedor', max_length=50, choices=DESENVOLVEDORES)
     tecnologia = models.CharField('Tecnologia', max_length=50, choices=TECNOLOGIAS)
-    comando = models.CharField('Comando', max_length=100)
-    descricao = models.CharField('Descricao', max_length=500)
+    comando = models.CharField('Comando', max_length=255)
+    descricao = models.TextField('Descrição')
     criado = models.DateTimeField('Criado', auto_now_add=True)
 
     def __str__(self):
         return self.desenvolvedor
 
     class Meta:
-        ordering = ['criado']
+        ordering = ['-criado']

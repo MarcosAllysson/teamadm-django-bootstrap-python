@@ -5,4 +5,4 @@ from .models import ComandoModel
 # Register your models here.
 @admin.register(ComandoModel)
 class ComandoModelAdm(admin.ModelAdmin):
-    list_display = ('desenvolvedor', 'tecnologia', 'comando', 'descricao', 'criado')
+    list_display = ('desenvolvedor', 'tecnologia', 'comando', 'criado')
